@@ -49,6 +49,11 @@ class DatabaseUserProvider extends UserProvider
         $this->eloquent = new EloquentUserProvider($hasher, $model);
     }
 
+    public function rehashPasswordIfRequired(Authenticatable $user, array $credentials, bool $force = false)
+    {
+        return $this->eloquent->rehashPasswordIfRequired($user, $credentials, $force);
+    }
+
     /**
      * Forward missing method calls to the underlying Eloquent provider.
      *
